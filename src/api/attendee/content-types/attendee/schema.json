@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "attendees",
+  "info": {
+    "singularName": "attendee",
+    "pluralName": "attendees",
+    "displayName": "attendee"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "attendee"
+    }
+  }
+}

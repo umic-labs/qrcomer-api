@@ -1,0 +1,31 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "service"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "present": {
+      "type": "boolean",
+      "default": false
+    },
+    "lecture": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::lecture.lecture",
+      "inversedBy": "services"
+    },
+    "attendee": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::attendee.attendee",
+      "inversedBy": "services"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lectures",
+  "info": {
+    "singularName": "lecture",
+    "pluralName": "lectures",
+    "displayName": "lecture",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "date": {
+      "type": "datetime"
+    },
+    "services": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::service.service",
+      "mappedBy": "lecture"
+    }
+  }
+}
