@@ -19,4 +19,15 @@ module.exports = createCoreService('api::service.service', ({ strapi }) => ({
 
     return results
   },
+
+  async updatePresence(entityId, { query }) {
+    const result = await strapi.query('api::service.service')
+      .update({
+        where: { id: entityId }, 
+        data: { present: true },
+        ...query
+      })
+
+    return result;
+  }
 }));

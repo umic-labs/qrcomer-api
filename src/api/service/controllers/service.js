@@ -28,5 +28,19 @@ module.exports = createCoreController('api::service.service', ({ strapi }) => ({
       .findServicesByAttendee({ attendeeId, query });
 
     return services;
+  },
+
+  async updatePresence(ctx) {
+    console.log(ctx.params.id)
+
+    const query = {
+      ...ctx.query,
+      populate: ['lecture']
+    }
+    
+    const response = await strapi.service('api::service.service')
+      .updatePresence(ctx.params.id, { query });
+
+    return response;
   }
 }));
