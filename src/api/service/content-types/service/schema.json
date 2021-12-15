@@ -4,7 +4,8 @@
   "info": {
     "singularName": "service",
     "pluralName": "services",
-    "displayName": "service"
+    "displayName": "service",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -17,9 +18,8 @@
     },
     "lecture": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::lecture.lecture",
-      "inversedBy": "services"
+      "relation": "oneToOne",
+      "target": "api::lecture.lecture"
     },
     "attendee": {
       "type": "relation",

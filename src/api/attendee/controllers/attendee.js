@@ -8,15 +8,18 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::attendee.attendee', ({ strapi }) =>  ({
   async findOne(ctx) {
-    ctx.query = { ...ctx.query, local: 'en' }
-    const { id } = ctx.params
+    const { id } = ctx.params;
 
-    const { data, meta } = await super.findOne(ctx);
-    const services = await strapi.service('api::service.service')
-      .getServicesByAttendee({ id });
-    const sanitizedServices = await this.sanitizeOutput(services, ctx);
-    data.attributes.services = this.transformResponse(sanitizedServices)
+    const query = { ...ctx.query, populate: ['services', 'services.lecture'] }
+    const service = await strapi.service('api::attendee.attendee').findOne(id, query);
 
-    return { data, meta };
+    return service;
   },
+
+  async find(ctx) {
+    const query = { ...ctx.query }
+    const services = await strapi.service('api::attendee.attendee').find(query);
+
+    return services;
+  }
 }))
