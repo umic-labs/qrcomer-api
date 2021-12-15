@@ -1,0 +1,171 @@
+{
+	"info": {
+		"_postman_id": "439a317e-1bd3-4a63-adb2-9c44e22748a7",
+		"name": "QRComer",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "attendees",
+			"item": [
+				{
+					"name": "find Attendee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/attendees",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne Attendee",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/attendees/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendees",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "lectures",
+			"item": [
+				{
+					"name": "find Lectures",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/lectures",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lectures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne Lecture",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/lectures/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"lectures",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "services",
+			"item": [
+				{
+					"name": "find Services",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/attendees/1/services",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendees",
+								"1",
+								"services"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update Services",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/attendees/1/services/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendees",
+								"1",
+								"services",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne Service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/services/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"services",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
