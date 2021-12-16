@@ -4,7 +4,8 @@
   "info": {
     "singularName": "attendee",
     "pluralName": "attendees",
-    "displayName": "attendee"
+    "displayName": "attendee",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -12,10 +13,13 @@
   "pluginOptions": {},
   "attributes": {
     "name": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "unique": true,
+      "required": true
     },
     "services": {
       "type": "relation",
