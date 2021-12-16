@@ -1,0 +1,163 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: QRComer
+  contact: {}
+host: example.com
+basePath: /
+securityDefinitions: {}
+schemes:
+- http
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /attendees:
+    get:
+      summary: find Attendee
+      tags:
+      - attendees
+      operationId: findAttendee
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    post:
+      summary: create Attendee
+      tags:
+      - attendees
+      operationId: createAttendee
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/createAttendeeRequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /attendees/1:
+    get:
+      summary: findOne Attendee
+      tags:
+      - attendees
+      operationId: findOneAttendee
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /lectures:
+    get:
+      summary: find Lectures
+      tags:
+      - lectures
+      operationId: findLectures
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /lectures/2:
+    get:
+      summary: findOne Lecture
+      tags:
+      - lectures
+      operationId: findOneLecture
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /attendees/3/services:
+    get:
+      summary: find Services
+      tags:
+      - services
+      operationId: findServices
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /attendees/11/services/29:
+    patch:
+      summary: update Services
+      tags:
+      - services
+      operationId: updateServices
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /attendees/11/services:
+    get:
+      summary: findOne Service
+      tags:
+      - services
+      operationId: findOneService
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  createAttendeeRequest:
+    title: createAttendeeRequest
+    example:
+      data:
+        name: Dua Lipa
+        email: dualipa@mailinator.com
+    type: object
+    properties:
+      data:
+        $ref: '#/definitions/Data'
+    required:
+    - data
+  Data:
+    title: Data
+    example:
+      name: Dua Lipa
+      email: dualipa@mailinator.com
+    type: object
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+    required:
+    - name
+    - email
+tags:
+- name: attendees
+- name: lectures
+- name: services
