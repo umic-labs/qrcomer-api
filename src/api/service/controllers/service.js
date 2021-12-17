@@ -22,10 +22,10 @@ module.exports = createCoreController('api::service.service', ({ strapi }) => ({
       populate: ['lecture']
     }
 
-    const { code } = ctx.params;
+    const { attendee } = ctx.query;
 
     const services = await strapi.service('api::service.service')
-      .findServicesByAttendee({ code, query });
+      .findServicesByAttendee({ code: attendee, query });
 
     return services;
   },
@@ -35,9 +35,11 @@ module.exports = createCoreController('api::service.service', ({ strapi }) => ({
       ...ctx.query,
       populate: ['lecture']
     }
+
+    const { lecture, attendee } = ctx.query
     
     const response = await strapi.service('api::service.service')
-      .updatePresence(ctx.params.id, { query });
+      .updatePresence({ lecture, attendee, query });
 
     return response;
   }

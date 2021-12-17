@@ -8,12 +8,12 @@ module.exports = {
   routes: [
     {
       method: 'GET',
-      path: '/attendees/:code/services',
+      path: '/services',
       handler: 'service.findByAttendee',
     },
     {
       method: 'PATCH',
-      path: '/attendees/:code/services/:id',
+      path: '/services',
       handler: 'service.updatePresence',
     }
   ]

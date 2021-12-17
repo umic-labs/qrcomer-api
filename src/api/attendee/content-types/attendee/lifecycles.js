@@ -16,4 +16,10 @@ module.exports = {
       });
     }
   },
+
+  async afterCreate(event) {
+    const { result } = event;
+
+    strapi.service('api::service.service').generateServicesByLectures({ result })
+  }
 };

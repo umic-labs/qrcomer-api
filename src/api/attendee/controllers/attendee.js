@@ -24,5 +24,5 @@ module.exports = createCoreController('api::attendee.attendee', ({ strapi }) => 
     const services = await strapi.service('api::attendee.attendee').find(query);
 
     return services;
-  }
+  },
 }))
