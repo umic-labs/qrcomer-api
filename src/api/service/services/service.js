@@ -20,12 +20,12 @@ module.exports = createCoreService('api::service.service', ({ strapi }) => ({
     return results
   },
 
-  async updatePresence({ lecture, attendee, query }) {
+  async updatePresence({ type, typeId, attendee, query }) {
     const result = await strapi.query('api::service.service')
       .update({
         where: {
           attendee: { code: attendee },
-          lecture: { id: lecture }
+          [type]: { id: typeId },
         }, 
         data: { present: true },
         ...query
@@ -41,7 +41,25 @@ module.exports = createCoreService('api::service.service', ({ strapi }) => ({
       strapi.db.query('api::service.service').create({
         data: {
           present: false,
+          type: 'lecture',
           lecture: lecture.id,
+          attendee: result.id
+        }
+      })
+    })
+
+    return services;
+  },
+
+  async generateServicesByMeals({ result }) {
+    const meals = await strapi.db.query('api::meal.meal').findMany()
+
+    const services = meals.map((meal) => {
+      strapi.db.query('api::service.service').create({
+        data: {
+          present: false,
+          type: 'meal',
+          meal: meal.id,
           attendee: result.id
         }
       })

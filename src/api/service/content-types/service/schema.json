@@ -26,6 +26,18 @@
       "relation": "manyToOne",
       "target": "api::attendee.attendee",
       "inversedBy": "services"
+    },
+    "meal": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::meal.meal"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "meal",
+        "lecture"
+      ]
     }
   }
 }
