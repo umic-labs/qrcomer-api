@@ -8,10 +8,13 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::attendee.attendee', ({ strapi }) =>  ({
   async findOne(ctx) {
-    const { id } = ctx.params;
+    const { code } = ctx.params;
 
     const query = { ...ctx.query, populate: ['services', 'services.lecture'] }
-    const service = await strapi.service('api::attendee.attendee').findOne(id, query);
+    const service = await strapi.db.query('api::attendee.attendee').findOne({
+      where: { code },
+      ...query
+    });
 
     return service;
   },

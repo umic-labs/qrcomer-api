@@ -13,8 +13,6 @@ module.exports = createCoreService('api::attendee.attendee', ({ strapi }) => ({
 
     const lectures = await strapi.db.query('api::lecture.lecture').findMany()
 
-    console.log({ result })
-
     lectures.map((lecture) => {
       strapi.db.query('api::service.service').create({
         data: {

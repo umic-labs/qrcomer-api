@@ -16,16 +16,21 @@
       "type": "string",
       "required": true
     },
-    "email": {
-      "type": "email",
-      "unique": true,
-      "required": true
-    },
     "services": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::service.service",
       "mappedBy": "attendee"
+    },
+    "phone": {
+      "type": "string",
+      "unique": true,
+      "required": true
+    },
+    "code": {
+      "type": "uid",
+      "targetField": "phone",
+      "required": false
     }
   }
 }
