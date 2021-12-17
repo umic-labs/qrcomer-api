@@ -9,7 +9,7 @@
 			"name": "attendees",
 			"item": [
 				{
-					"name": "find Attendee",
+					"name": "find Attendees",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -32,7 +32,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"data\": {\n        \"name\": \"Dua Lipa\",\n        \"email\": \"dualipa@mailinator.com\"\n    }\n}",
+							"raw": "{\n    \"data\": {\n        \"name\": \"Martina Nintzel Gomez \",\n        \"phone\": \"(62) 9-1523-9204\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -57,13 +57,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/attendees/1",
+							"raw": "{{url}}/attendees/62915239204",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"attendees",
-								"1"
+								"62915239204"
 							]
 						}
 					},
@@ -120,14 +120,18 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/attendees/3/services",
+							"raw": "{{url}}/services?attendee=62915239204",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"attendees",
-								"3",
 								"services"
+							],
+							"query": [
+								{
+									"key": "attendee",
+									"value": "62915239204"
+								}
 							]
 						}
 					},
@@ -139,15 +143,22 @@
 						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/attendees/11/services/29",
+							"raw": "{{url}}/services?attendee=62915239204&lecture=8",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"attendees",
-								"11",
-								"services",
-								"29"
+								"services"
+							],
+							"query": [
+								{
+									"key": "attendee",
+									"value": "62915239204"
+								},
+								{
+									"key": "lecture",
+									"value": "8"
+								}
 							]
 						}
 					},
