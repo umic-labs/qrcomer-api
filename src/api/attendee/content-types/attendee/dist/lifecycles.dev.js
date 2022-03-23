@@ -8,8 +8,8 @@ module.exports = {
     var SPECIAL_CHARS = /[!@#$%^&*(),.?":{}|<>-]/g;
     var EMPTY_CHAR = '';
 
-    if (data.phone) {
-      data.code = slugify(data.phone, {
+    if (data.registrationCode) {
+      data.code = slugify(data.registrationCode, {
         remove: SPECIAL_CHARS,
         replacement: EMPTY_CHAR
       });

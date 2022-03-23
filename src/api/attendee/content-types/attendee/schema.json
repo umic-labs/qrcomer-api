@@ -22,14 +22,14 @@
       "target": "api::service.service",
       "mappedBy": "attendee"
     },
-    "phone": {
+    "registrationCode": {
       "type": "string",
       "unique": true,
       "required": true
     },
     "code": {
       "type": "uid",
-      "targetField": "phone",
+      "targetField": "registrationCode",
       "required": false
     }
   }

@@ -32,7 +32,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"data\": {\n        \"name\": \"Martina Nintzel Gomez \",\n        \"phone\": \"(62) 9-1523-9204\"\n    }\n}",
+							"raw": "{\n    \"data\": {\n        \"name\": \"Martina Nintzel Gomez \",\n        \"registrationCode\": \"(62) 9-1523-9204\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
