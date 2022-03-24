@@ -16,7 +16,7 @@
       "type": "string"
     },
     "date": {
-      "type": "datetime"
+      "type": "date"
     }
   }
 }
