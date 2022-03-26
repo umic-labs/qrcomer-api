@@ -22,10 +22,13 @@ module.exports = createCoreController('api::service.service', ({ strapi }) => ({
       populate: ['lecture', 'meal']
     }
 
-    const { attendee } = ctx.query;
+    const { lecture, attendee, meal } = ctx.query
+
+    const type = lecture && 'lecture' || meal && 'meal'
+    const typeId = lecture && lecture || meal && meal
 
     const services = await strapi.service('api::service.service')
-      .findServicesByAttendee({ code: attendee, query });
+      .findServicesByAttendee({ type, typeId, attendee, query });
 
     return services;
   },

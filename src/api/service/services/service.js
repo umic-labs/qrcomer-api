@@ -7,17 +7,20 @@
 const { createCoreService } = require('@strapi/strapi').factories;
 
 module.exports = createCoreService('api::service.service', ({ strapi }) => ({
-  async findServicesByAttendee({ code, query }) {  
+  async findServicesByAttendee({ type, typeId, attendee, query }) {  
+
+    const typeQuery = type && typeId && { [type]: { id: typeId } }
 
     const results = await strapi.db.query('api::service.service')
       .findMany({
         where: {
-          attendee: { code }
+          attendee: { code: attendee },
+          ...typeQuery,
         },
         ...query
       });
 
-    return results
+    return !typeQuery ? results : results[0]
   },
 
   async updatePresence({ type, typeId, attendee, query }) {
