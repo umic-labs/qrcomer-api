@@ -9,30 +9,13 @@
 			"name": "attendees",
 			"item": [
 				{
-					"name": "find Attendees",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{url}}/attendees",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"attendees"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "create Attendee",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"data\": {\n        \"name\": \"Martina Nintzel Gomez \",\n        \"registrationCode\": \"(62) 9-1523-9204\"\n    }\n}",
+							"raw": "{\n    \"data\": {\n        \"name\": \"Luneas Mucho Loko\",\n        \"registrationCode\": \"006\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -52,18 +35,35 @@
 					"response": []
 				},
 				{
+					"name": "find Attendees",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/attendees",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"attendees"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "findOne Attendee",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/attendees/62915239204",
+							"raw": "{{url}}/attendees/COMIC202220dd129da16a9afb802d8b595485f8d2719aea44",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"attendees",
-								"62915239204"
+								"COMIC202220dd129da16a9afb802d8b595485f8d2719aea44"
 							]
 						}
 					},
@@ -112,6 +112,46 @@
 			]
 		},
 		{
+			"name": "meals",
+			"item": [
+				{
+					"name": "find Meals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/meals",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne Meal",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/meals/2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"meals",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "services",
 			"item": [
 				{
@@ -120,7 +160,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/services?attendee=62915239204",
+							"raw": "{{url}}/services?attendee=COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81",
 							"host": [
 								"{{url}}"
 							],
@@ -130,7 +170,7 @@
 							"query": [
 								{
 									"key": "attendee",
-									"value": "62915239204"
+									"value": "COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81"
 								}
 							]
 						}
@@ -138,12 +178,12 @@
 					"response": []
 				},
 				{
-					"name": "update Services",
+					"name": "registerPresence Service",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/services?attendee=62915239204&lecture=8",
+							"raw": "{{url}}/services?meal=3&attendee=COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81",
 							"host": [
 								"{{url}}"
 							],
@@ -152,12 +192,17 @@
 							],
 							"query": [
 								{
-									"key": "attendee",
-									"value": "62915239204"
+									"key": "lecture",
+									"value": "8",
+									"disabled": true
 								},
 								{
-									"key": "lecture",
-									"value": "8"
+									"key": "meal",
+									"value": "3"
+								},
+								{
+									"key": "attendee",
+									"value": "COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81"
 								}
 							]
 						}
@@ -170,14 +215,22 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/attendees/11/services",
+							"raw": "{{url}}/services?attendee=COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81&meal=3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"attendees",
-								"11",
 								"services"
+							],
+							"query": [
+								{
+									"key": "attendee",
+									"value": "COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81"
+								},
+								{
+									"key": "meal",
+									"value": "3"
+								}
 							]
 						}
 					},
