@@ -19,7 +19,7 @@ module.exports = createCoreController('api::service.service', ({ strapi }) => ({
   findByAttendee: async (ctx) => {
     const query = {
       ...ctx.query,
-      populate: ['lecture', 'meal']
+      populate: ['appointment']
     }
 
     const { lecture, attendee, meal } = ctx.query

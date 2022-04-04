@@ -77,13 +77,12 @@ module.exports = createCoreService('api::service.service', ({ strapi }) => ({
     const services = appointments.map((appointment) => {
       appointment.isPublic && strapi.db.query('api::service.service').create({
         data: {
-          present: false,
           appointment: appointment.id,
           attendee: result.id
         }
       })
     })
-    
+
     return services;
   }
 }));
