@@ -15,7 +15,6 @@ module.exports = {
   async afterCreate(event) {
     const { result } = event;
 
-    strapi.service('api::service.service').generateServicesByLectures({ result })
-    strapi.service('api::service.service').generateServicesByMeals({ result })
+    strapi.service('api::service.service').generateServicesByAppointment({ result })
   }
 };

@@ -38,6 +38,16 @@
         "meal",
         "lecture"
       ]
+    },
+    "appointment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::appointment.appointment"
+    },
+    "hasRedeemed": {
+      "type": "boolean",
+      "default": false,
+      "required": false
     }
   }
 }

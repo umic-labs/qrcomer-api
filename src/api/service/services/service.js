@@ -69,5 +69,21 @@ module.exports = createCoreService('api::service.service', ({ strapi }) => ({
     })
 
     return services;
+  },
+
+  async generateServicesByAppointment({ result }) {
+    const appointments = await strapi.db.query('api::appointment.appointment').findMany()
+
+    const services = appointments.map((appointment) => {
+      appointment.isPublic && strapi.db.query('api::service.service').create({
+        data: {
+          present: false,
+          appointment: appointment.id,
+          attendee: result.id
+        }
+      })
+    })
+    
+    return services;
   }
 }));
