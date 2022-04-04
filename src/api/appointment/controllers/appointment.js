@@ -18,4 +18,40 @@ module.exports = createCoreController('api::appointment.appointment', ({ strapi 
 
     return services;
   },
+
+  findMeals: async (ctx) => {
+    const query = {
+      ...ctx.query,
+      populate: ['appointment']
+    }
+
+    const services = await strapi.service('api::appointment.appointment')
+      .findByType({ type: 'meal', query });
+
+    return services;
+  },
+
+  findMeals: async (ctx) => {
+    const query = {
+      ...ctx.query,
+      populate: ['appointment']
+    }
+
+    const services = await strapi.service('api::appointment.appointment')
+      .findByType({ type: 'meal', query });
+
+    return services;
+  },
+
+  findLectures: async (ctx) => {
+    const query = {
+      ...ctx.query,
+      populate: ['appointment']
+    }
+
+    const services = await strapi.service('api::appointment.appointment')
+      .findByType({ type: 'lecture', query });
+
+    return services;
+  },
 }));

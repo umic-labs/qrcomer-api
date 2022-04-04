@@ -12,25 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "present": {
-      "type": "boolean",
-      "default": false
-    },
-    "lecture": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::lecture.lecture"
-    },
     "attendee": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::attendee.attendee",
       "inversedBy": "services"
-    },
-    "meal": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::meal.meal"
     },
     "type": {
       "type": "enumeration",
