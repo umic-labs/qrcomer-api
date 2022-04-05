@@ -31,6 +31,10 @@
       "type": "uid",
       "targetField": "registrationCode",
       "required": false
+    },
+    "qrCodeUrl": {
+      "type": "uid",
+      "targetField": "registrationCode"
     }
   }
 }

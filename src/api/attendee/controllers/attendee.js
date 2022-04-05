@@ -10,7 +10,15 @@ module.exports = createCoreController('api::attendee.attendee', ({ strapi }) => 
   async findOne(ctx) {
     const { code } = ctx.params;
 
-    const query = { ...ctx.query, populate: ['services', 'services.lecture', 'services.meal'] }
+    const query = {
+      ...ctx.query,
+      populate: [
+        'services',
+        'services.lecture',
+        'services.meal',
+      ]
+    }
+    
     const service = await strapi.db.query('api::attendee.attendee').findOne({
       where: { code },
       ...query
