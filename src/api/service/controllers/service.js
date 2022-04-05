@@ -10,7 +10,7 @@ module.exports = createCoreController('api::service.service', ({ strapi }) => ({
   findMany: async (ctx) => {
     const query = {
       ...ctx.query,
-      populate: ['appointment']
+      populate: ['appointment', 'attendee']
     }
 
     const { attendee, appointment } = ctx.query
