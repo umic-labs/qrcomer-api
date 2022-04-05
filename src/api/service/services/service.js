@@ -7,30 +7,45 @@
 const { createCoreService } = require('@strapi/strapi').factories;
 
 module.exports = createCoreService('api::service.service', ({ strapi }) => ({
-  async findServicesByAttendee({ type, typeId, attendee, query }) {  
-
-    const typeQuery = type && typeId && { [type]: { id: typeId } }
-
-    const results = await strapi.db.query('api::service.service')
-      .findMany({
+  async findOneByAttendee({ appointment, attendee, query }) {
+    const result = await strapi.db.query('api::service.service')
+      .findOne({
         where: {
-          attendee: { code: attendee },
-          ...typeQuery,
+          $and: [
+            {
+              attendee: { code: attendee },
+            },
+            {
+              appointment,
+            }
+          ]
         },
         ...query
       });
 
-    return !typeQuery ? results : results[0]
+    return result
   },
 
-  async updatePresence({ type, typeId, attendee, query }) {
+  async findManyByAttendee({ attendee, query }) {
+    const results = await strapi.db.query('api::service.service')
+      .findMany({
+        where: {
+          attendee: { code: attendee },
+        },
+        ...query
+      });
+
+    return results
+  },
+
+  async redeem({ appointment, attendee, query }) {
     const result = await strapi.query('api::service.service')
       .update({
         where: {
           attendee: { code: attendee },
-          [type]: { id: typeId },
+          appointment,
         }, 
-        data: { hasRedeemed: true },
+        data: { isRedeemed: true },
         ...query
       })
 

@@ -18,19 +18,12 @@
       "target": "api::attendee.attendee",
       "inversedBy": "services"
     },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "meal",
-        "lecture"
-      ]
-    },
     "appointment": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::appointment.appointment"
     },
-    "hasRedeemed": {
+    "isRedeemed": {
       "type": "boolean",
       "default": false,
       "required": false

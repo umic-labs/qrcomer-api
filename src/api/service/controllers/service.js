@@ -7,45 +7,45 @@
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::service.service', ({ strapi }) => ({
-  async findOne(ctx) {
-    const { id } = ctx.params;
-
-    const query = { ...ctx.query, populate: ['lecture', 'meal'] }
-    const service = await strapi.service('api::service.service').findOne(id, query);
-
-    return service;
-  },
-
-  findByAttendee: async (ctx) => {
+  findOne: async (ctx) => {
     const query = {
       ...ctx.query,
       populate: ['appointment']
     }
 
-    const { lecture, attendee, meal } = ctx.query
-
-    const type = lecture && 'lecture' || meal && 'meal'
-    const typeId = lecture && lecture || meal && meal
+    const { attendee } = ctx.query
+    const { appointment } = ctx.params
 
     const services = await strapi.service('api::service.service')
-      .findServicesByAttendee({ type, typeId, attendee, query });
+      .findOneByAttendee({ appointment, attendee, query })
+
+    return services
+  },
+
+  findMany: async (ctx) => {
+    const query = {
+      ...ctx.query,
+      populate: ['appointment']
+    }
+
+    const { attendee } = ctx.query
+
+    const services = await strapi.service('api::service.service')
+      .findManyByAttendee({ attendee, query });
 
     return services;
   },
 
-  async updatePresence(ctx) {
+  async redeem(ctx) {
     const query = {
       ...ctx.query,
-      populate: ['lecture', 'meal']
+      populate: ['appointment']
     }
 
-    const { lecture, attendee, meal } = ctx.query
-
-    const type = lecture && 'lecture' || meal && 'meal'
-    const typeId = lecture && lecture || meal && meal
+    const { appointment, attendee } = ctx.query
     
     const response = await strapi.service('api::service.service')
-      .updatePresence({ type, typeId, attendee, query });
+      .redeem({ appointment, attendee, query });
 
     return response;
   }
