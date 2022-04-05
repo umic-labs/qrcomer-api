@@ -7,31 +7,17 @@
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('api::service.service', ({ strapi }) => ({
-  findOne: async (ctx) => {
-    const query = {
-      ...ctx.query,
-      populate: ['appointment']
-    }
-
-    const { attendee } = ctx.query
-    const { appointment } = ctx.params
-
-    const services = await strapi.service('api::service.service')
-      .findOneByAttendee({ appointment, attendee, query })
-
-    return services
-  },
-
   findMany: async (ctx) => {
     const query = {
       ...ctx.query,
       populate: ['appointment']
     }
 
-    const { attendee } = ctx.query
+    const { attendee, appointment } = ctx.query
 
-    const services = await strapi.service('api::service.service')
-      .findManyByAttendee({ attendee, query });
+    const services = !!appointment
+      ? await strapi.service('api::service.service').findOneByAttendee({ appointment, attendee, query })
+      : await strapi.service('api::service.service').findManyByAttendee({ attendee, query })
 
     return services;
   },
