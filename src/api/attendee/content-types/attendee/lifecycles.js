@@ -23,7 +23,8 @@ module.exports = {
 
 function composeQRCode({ registrationCode }) {
   const PREFIX = 'COMIC2022'
-  return `${PREFIX}${SHA1(registrationCode)}`;
+  const encryptedCode = SHA3(registrationCode, { outputLength: 32 })
+  return `${PREFIX}${encryptedCode}`;
 }
 
 function composeQRCodeUrl({ code }){
