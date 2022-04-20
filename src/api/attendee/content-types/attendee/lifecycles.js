@@ -1,6 +1,6 @@
 'use strict';
 
-const { SHA1 } = require('crypto-js')
+const { SHA3 } = require('crypto-js')
 
 module.exports = {
   beforeCreate(event) {
@@ -24,7 +24,7 @@ module.exports = {
 function composeQRCode({ registrationCode }) {
   const PREFIX = 'COMIC2022'
   const encryptedCode = SHA3(registrationCode, { outputLength: 32 })
-  return `${PREFIX}${encryptedCode}`;
+  return `${PREFIX}-${encryptedCode}`
 }
 
 function composeQRCodeUrl({ code }){
