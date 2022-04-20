@@ -35,6 +35,16 @@
     "qrCodeUrl": {
       "type": "uid",
       "targetField": "registrationCode"
+    },
+    "hasLectures": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "hasMeals": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }

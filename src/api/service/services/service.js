@@ -52,18 +52,33 @@ module.exports = createCoreService('api::service.service', ({ strapi }) => ({
     return result;
   },
 
-  async generateServicesByAppointment({ result }) {
-    const appointments = await strapi.db.query('api::appointment.appointment').findMany()
+  async generateServicesByAppointment({ attendee }) {
+    const appointments = await strapi.db.query('api::appointment.appointment')
+    .findMany()
 
-    const services = appointments.map((appointment) => {
-      appointment.isPublic && strapi.db.query('api::service.service').create({
+    const lectures = attendee.hasLectures
+      ? composeAppointmentsByType({ appointments, type: 'lecture' })
+      : []
+    
+    const meals = attendee.hasMeals
+      ? composeAppointmentsByType({ appointments, type: 'meal' })
+      : []
+        
+    const appointmentsToCreate = [...lectures, ...meals]
+  
+    const services = appointmentsToCreate.map((appointment) => {
+      strapi.db.query('api::service.service').create({
         data: {
           appointment: appointment.id,
-          attendee: result.id
+          attendee: attendee.id
         }
       })
     })
 
-    return services;
+    return services
   }
-}));
+}))
+
+const composeAppointmentsByType = ({ appointments, type }) => {
+  return appointments.filter((appointment) => appointment.type === type)
+}

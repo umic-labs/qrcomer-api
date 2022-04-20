@@ -46,16 +46,6 @@
       ],
       "required": true
     },
-    "isPublic": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "boolean",
-      "default": false,
-      "required": true
-    },
     "Description": {
       "pluginOptions": {
         "i18n": {
