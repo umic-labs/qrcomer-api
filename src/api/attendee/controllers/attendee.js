@@ -14,8 +14,7 @@ module.exports = createCoreController('api::attendee.attendee', ({ strapi }) => 
       ...ctx.query,
       populate: [
         'services',
-        'services.lecture',
-        'services.meal',
+        'services.appointment',
       ]
     }
     
