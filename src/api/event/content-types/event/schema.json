@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "events",
+  "info": {
+    "singularName": "event",
+    "pluralName": "events",
+    "displayName": "Event"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "thumbnail": {
+      "allowedTypes": [
+        "images",
+        "videos"
+      ],
+      "type": "media",
+      "multiple": false
+    },
+    "beginAt": {
+      "type": "datetime",
+      "required": true
+    },
+    "endAt": {
+      "type": "datetime"
+    },
+    "locationTitle": {
+      "type": "string",
+      "required": true
+    },
+    "locationAddress": {
+      "type": "string"
+    },
+    "locationCoordinates": {
+      "type": "string",
+      "regex": "^[-+]?([1-8]?\\d(\\.\\d+)?|90(\\.0+)?),\\s*[-+]?(180(\\.0+)?|((1[0-7]\\d)|([1-9]?\\d))(\\.\\d+)?)$"
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    }
+  }
+}
