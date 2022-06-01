@@ -10,7 +10,12 @@ module.exports = createCoreService("api::event.event", ({ strapi }) => ({
   async findOne(entityId, params = {}) {
     params = {
       ...params,
-      populate: ['thumbnail', 'tickets']
+      populate: {
+        tickets: true,
+        thumbnail: {
+          fields: ['url', 'name']
+        }
+      }
     }
 
     return strapi.entityService.findOne(
