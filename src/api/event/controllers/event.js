@@ -8,8 +8,11 @@ const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController("api::event.event", ({ strapi }) => ({
   async findOne(ctx) {
+    const { id } = ctx.params;
+
     const query = {
       ...ctx.query,
+      where: { id },
       populate: ['tickets', 'thumbnail']
     };
 
