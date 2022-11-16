@@ -32,7 +32,7 @@
     "name": {
       "type": "string"
     },
-    "phone": {
+    "cpf": {
       "type": "string"
     }
   }

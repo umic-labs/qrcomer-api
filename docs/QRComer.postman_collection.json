@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "439a317e-1bd3-4a63-adb2-9c44e22748a7",
 		"name": "QRComer",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11147507"
 	},
 	"item": [
 		{
@@ -15,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"data\": {\n        \"name\": \"Luneas Mucho Loko\",\n        \"registrationCode\": \"006\"\n    }\n}",
+							"raw": "{\n    \"data\": {\n        \"name\": \"dai\",\n        \"phone\": \"444\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -57,13 +58,101 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/attendees/COMIC202220dd129da16a9afb802d8b595485f8d2719aea44",
+							"raw": "{{url}}/attendees/{{attendee}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"attendees",
-								"COMIC202220dd129da16a9afb802d8b595485f8d2719aea44"
+								"{{attendee}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "purchases",
+			"item": [
+				{
+					"name": "create purchases",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"email\": \"ethan@gmail.com\",\n        \"event\": \"1\",\n        \"Attendees\": {\n            \"data\": [\n                {\n                    \"name\": \"fer\",\n                    \"phone\": \"444\"\n                },\n                {\n                    \"name\": \"Gege\",\n                    \"phone\": \"555\"\n                },\n                {\n                    \"name\": \"hel\",\n                    \"phone\": \"666\"\n                }\n            ]\n        }\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/purchases",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find purchases",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/purchases",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"purchases"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "events",
+			"item": [
+				{
+					"name": "find Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/events",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne Event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/events/{{event}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"{{event}}"
 							]
 						}
 					},
@@ -112,6 +201,46 @@
 			]
 		},
 		{
+			"name": "workshops",
+			"item": [
+				{
+					"name": "find Workshops",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/workshops",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"workshops"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne Workshop",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/workshops/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"workshops",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "meals",
 			"item": [
 				{
@@ -137,13 +266,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/meals/2",
+							"raw": "{{url}}/meals/3",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"meals",
-								"2"
+								"3"
 							]
 						}
 					},
@@ -160,7 +289,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/services?attendee=COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81",
+							"raw": "{{url}}/services?attendee={{attendee}}",
 							"host": [
 								"{{url}}"
 							],
@@ -170,7 +299,7 @@
 							"query": [
 								{
 									"key": "attendee",
-									"value": "COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81"
+									"value": "{{attendee}}"
 								}
 							]
 						}
@@ -178,12 +307,35 @@
 					"response": []
 				},
 				{
-					"name": "registerPresence Service",
+					"name": "create Service",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/services?attendee={{attendee}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"services"
+							],
+							"query": [
+								{
+									"key": "attendee",
+									"value": "{{attendee}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "redeem Service",
 					"request": {
 						"method": "PATCH",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/services?meal=3&attendee=COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81",
+							"raw": "{{url}}/services?attendee={{attendee}}&appointment=1",
 							"host": [
 								"{{url}}"
 							],
@@ -197,12 +349,12 @@
 									"disabled": true
 								},
 								{
-									"key": "meal",
-									"value": "3"
+									"key": "attendee",
+									"value": "{{attendee}}"
 								},
 								{
-									"key": "attendee",
-									"value": "COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81"
+									"key": "appointment",
+									"value": "1"
 								}
 							]
 						}
@@ -215,7 +367,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "{{url}}/services?attendee=COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81&meal=3",
+							"raw": "{{url}}/services?attendee={{attendee}}&appointment=1",
 							"host": [
 								"{{url}}"
 							],
@@ -225,11 +377,11 @@
 							"query": [
 								{
 									"key": "attendee",
-									"value": "COMIC2022c63528a52274a35d1c07bd9e55a83c6eb073de81"
+									"value": "{{attendee}}"
 								},
 								{
-									"key": "meal",
-									"value": "3"
+									"key": "appointment",
+									"value": "1"
 								}
 							]
 						}
@@ -257,6 +409,91 @@
 					}
 				}
 			]
+		},
+		{
+			"name": "tickets",
+			"item": [
+				{
+					"name": "find Tickets",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/events/1/tickets",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"tickets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "findOne Ticket",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/events/1/tickets/1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"events",
+								"1",
+								"tickets",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "auth",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const body = pm.response.json();",
+							"pm.collectionVariables.get(\"variable_key\");",
+							"postman.setEnvironmentVariable(\"token\", body.jwt);",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"identifier\": {{identifier}},\n  \"password\": {{password}}\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/auth/local",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"auth",
+						"local"
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
