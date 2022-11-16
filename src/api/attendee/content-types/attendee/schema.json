@@ -22,19 +22,12 @@
       "target": "api::service.service",
       "mappedBy": "attendee"
     },
-    "registrationCode": {
-      "type": "string",
-      "unique": true,
-      "required": true
-    },
     "code": {
       "type": "uid",
-      "targetField": "registrationCode",
       "required": false
     },
     "qrCodeUrl": {
-      "type": "uid",
-      "targetField": "registrationCode"
+      "type": "uid"
     },
     "hasLectures": {
       "type": "boolean",
@@ -45,6 +38,23 @@
       "type": "boolean",
       "default": false,
       "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "city": {
+      "type": "string"
+    },
+    "church": {
+      "type": "string"
+    },
+    "event": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "attendees"
     }
   }
 }
