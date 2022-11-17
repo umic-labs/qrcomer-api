@@ -1,0 +1,38 @@
+{
+  "kind": "collectionType",
+  "collectionName": "purchases",
+  "info": {
+    "singularName": "purchase",
+    "pluralName": "purchases",
+    "displayName": "Purchase",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "approved",
+        "pending",
+        "denied"
+      ],
+      "default": "pending"
+    },
+    "email": {
+      "type": "string"
+    },
+    "number": {
+      "type": "uid",
+      "targetField": "email"
+    },
+    "attendees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::attendee.attendee",
+      "mappedBy": "purchase"
+    }
+  }
+}

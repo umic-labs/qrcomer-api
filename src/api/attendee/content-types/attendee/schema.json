@@ -55,6 +55,12 @@
       "relation": "manyToOne",
       "target": "api::event.event",
       "inversedBy": "attendees"
+    },
+    "purchase": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::purchase.purchase",
+      "inversedBy": "attendees"
     }
   }
 }
