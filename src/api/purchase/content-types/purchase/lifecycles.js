@@ -1,20 +1,16 @@
 'use strict';
-const { SHA3 } = require('crypto-js')
 
 module.exports = {
-  beforeCreate(event) {
-    const { data } = event.params;
-    const number = data.id
+  async afterCreate(eventStrapi) {
+    const purchase = eventStrapi.result.id
+    const { event } = eventStrapi.params.data
 
-    data.number = SHA3(number.toString(), { outputLength: 16 }).toString()
-  },
-
-  async afterCreate(event) {
-    const result = await event.params.data.Attendees.data.map(attenddee => {
-      strapi.db.query('api::attendee.attendee').create({ 
+    const result = await eventStrapi.params.data.Attendees.data.map(attenddee => {
+      return strapi.db.query('api::attendee.attendee').create({ 
         data: {
           ...attenddee,
-          "purchase": event.result.id
+          event,
+          purchase
         }
       })
     })

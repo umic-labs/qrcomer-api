@@ -12,27 +12,22 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "status": {
-      "type": "enumeration",
-      "enum": [
-        "approved",
-        "pending",
-        "denied"
-      ],
-      "default": "pending"
-    },
     "email": {
       "type": "string"
-    },
-    "number": {
-      "type": "uid",
-      "targetField": "email"
     },
     "attendees": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::attendee.attendee",
       "mappedBy": "purchase"
+    },
+    "event": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::event.event"
+    },
+    "total": {
+      "type": "integer"
     }
   }
 }

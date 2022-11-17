@@ -50,16 +50,22 @@
     "church": {
       "type": "string"
     },
+    "purchase": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::purchase.purchase",
+      "inversedBy": "attendees"
+    },
     "event": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::event.event",
       "inversedBy": "attendees"
     },
-    "purchase": {
+    "ticket": {
       "type": "relation",
       "relation": "manyToOne",
-      "target": "api::purchase.purchase",
+      "target": "api::ticket.ticket",
       "inversedBy": "attendees"
     }
   }
