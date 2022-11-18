@@ -28,6 +28,12 @@
     },
     "total": {
       "type": "integer"
+    },
+    "name": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
     }
   }
 }
