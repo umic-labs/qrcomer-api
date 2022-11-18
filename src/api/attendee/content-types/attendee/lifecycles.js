@@ -5,13 +5,10 @@ const { SHA3 } = require('crypto-js')
 module.exports = {
   beforeCreate(event) {
     const { data } = event.params;
-    const { registrationCode } = data
-    const code = composeQRCode({ registrationCode })
+    const code = composeQRCode()
 
-    if (registrationCode) {
-      data.code = code
-      data.qrCodeUrl = composeQRCodeUrl({ code })
-    }
+    data.code = code
+    data.qrCodeUrl = composeQRCodeUrl({ code })
   },
 
   async afterCreate(event) {
@@ -21,9 +18,10 @@ module.exports = {
   }
 };
 
-function composeQRCode({ registrationCode }) {
-  const PREFIX = 'COMIC2022'
-  const encryptedCode = SHA3(registrationCode, { outputLength: 32 })
+function composeQRCode() {
+  const PREFIX = 'COMIC2023'
+  const randomize = Date.now().toString()
+  const encryptedCode = SHA3(randomize, { outputLength: 16 })
   return `${PREFIX}-${encryptedCode}`
 }
 

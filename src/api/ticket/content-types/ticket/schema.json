@@ -36,6 +36,12 @@
       "relation": "manyToOne",
       "target": "api::event.event",
       "inversedBy": "tickets"
+    },
+    "attendees": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::attendee.attendee",
+      "mappedBy": "ticket"
     }
   }
 }
