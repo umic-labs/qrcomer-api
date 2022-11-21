@@ -14,7 +14,7 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "services": {
       "type": "relation",
@@ -41,7 +41,7 @@
     },
     "phone": {
       "type": "string",
-      "required": true,
+      "required": false,
       "unique": false
     },
     "city": {
