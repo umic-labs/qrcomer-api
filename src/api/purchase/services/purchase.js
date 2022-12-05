@@ -35,9 +35,9 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
         }
       ],
       back_urls: {
-        "success": `${process.env.FRONT_END_APP_URL}/#/feedback-payment`,
-        "failure": `${process.env.FRONT_END_APP_URL}/#/feedback-payment`,
-        "pending": `${process.env.FRONT_END_APP_URL}/#/feedback-payment`
+        "success": `${process.env.FRONT_END_APP_URL}/feedback-payment`,
+        "failure": `${process.env.FRONT_END_APP_URL}/feedback-payment`,
+        "pending": `${process.env.FRONT_END_APP_URL}/feedback-payment`
       },
       auto_return: "approved",
     };
