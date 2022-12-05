@@ -7,9 +7,9 @@
 module.exports = {
   routes: [
     {
-      method: 'POST',
-      path: '/purchases/create_preference',
-      handler: 'purchase.createPreference',
-    }
+      method: 'GET',
+      path: '/purchases/preference/:preferenceId',
+      handler: 'purchase.findByPreference',
+    },
   ]
 }

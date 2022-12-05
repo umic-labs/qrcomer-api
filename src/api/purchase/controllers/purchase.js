@@ -1,5 +1,5 @@
 'use strict';
-const mercadopago = require("mercadopago")
+
 
 /**
  *  purchase controller
@@ -19,40 +19,13 @@ module.exports = createCoreController('api::purchase.purchase', ({ strapi }) => 
     return this.transformResponse(result);
   },
 
-  async createPreference(ctx) {
-    const { request, res } = ctx
 
-    console.log()
+  async findByPreference(ctx) {
+    const { preferenceId } = ctx.params;
 
-    let preference = {
-      items: [
-        {
-          title: request.body.description,
-          unit_price: Number(request.body.price),
-          quantity: Number(request.body.quantity),
-        }
-      ],
-      back_urls: {
-        "success": "http://localhost:8080/feedback",
-        "failure": "http://localhost:8080/feedback",
-        "pending": "http://localhost:8080/feedback"
-      },
-      auto_return: "approved",
-    };
+    const purchase = await strapi.service('api::purchase.purchase')
+      .findByPreference(preferenceId);
 
-    mercadopago.configure({
-      access_token: "TEST-226655839749533-100805-f2b10079d93c7e217307bbf06f10738f-203994861",
-    });
-
-    const responsePreference = await mercadopago.preferences.create(preference)
-      .then((response)  => {
-        
-        return response.body
-
-      }).catch(function (error) {
-        console.log(error);
-		});
-
-    return responsePreference
-  }
+    return this.transformResponse(purchase);
+  },
 }));
