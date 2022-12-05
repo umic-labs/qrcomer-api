@@ -43,7 +43,7 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
     };
 
     mercadopago.configure({
-      access_token: "TEST-226655839749533-100805-f2b10079d93c7e217307bbf06f10738f-203994861",
+      access_token: process.env.ACCESS_TOKEN
     });
 
     const responsePreference = await mercadopago.preferences.create(preference)
