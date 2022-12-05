@@ -1,5 +1,6 @@
 'use strict';
 
+
 /**
  *  purchase controller
  */
@@ -16,5 +17,15 @@ module.exports = createCoreController('api::purchase.purchase', ({ strapi }) => 
     });
 
     return this.transformResponse(result);
-  }
+  },
+
+
+  async findByPreference(ctx) {
+    const { preferenceId } = ctx.params;
+
+    const purchase = await strapi.service('api::purchase.purchase')
+      .findByPreference(preferenceId);
+
+    return this.transformResponse(purchase);
+  },
 }));

@@ -34,6 +34,25 @@
     },
     "cpf": {
       "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "paid"
+      ],
+      "default": "pending"
+    },
+    "items": {
+      "type": "json"
+    },
+    "preference": {
+      "type": "json"
+    },
+    "preferenceId": {
+      "type": "string",
+      "unique": true,
+      "required": true
     }
   }
 }
