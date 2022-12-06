@@ -19,7 +19,6 @@ module.exports = createCoreController('api::purchase.purchase', ({ strapi }) => 
     return this.transformResponse(result);
   },
 
-
   async findByPreference(ctx) {
     const { preferenceId } = ctx.params;
 
@@ -27,5 +26,15 @@ module.exports = createCoreController('api::purchase.purchase', ({ strapi }) => 
       .findByPreference(preferenceId);
 
     return this.transformResponse(purchase);
+  },
+
+  async feedback(ctx) {
+    const { preferenceId } = ctx.params;
+    const { status } = ctx.query
+
+    const nextPurchase = await strapi.service('api::purchase.purchase')
+      .feedback({ preferenceId, status });
+
+    return this.transformResponse(nextPurchase);
   },
 }));

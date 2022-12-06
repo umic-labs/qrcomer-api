@@ -39,7 +39,7 @@
       "type": "enumeration",
       "enum": [
         "pending",
-        "paid"
+        "approved"
       ],
       "default": "pending"
     },

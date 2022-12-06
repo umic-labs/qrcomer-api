@@ -57,7 +57,6 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
   },
 
   async findByPreference(preferenceId) {  
-
     const result = await strapi.db.query('api::purchase.purchase')
       .findOne({
         where: {
@@ -67,5 +66,19 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
       });
 
     return result
-  }
+  },
+
+  async feedback({ preferenceId, status }) {
+    console.log({ preferenceId, status })
+
+    const purchase = await strapi.query('api::purchase.purchase')
+      .update({
+        where: {
+          preferenceId,
+        }, 
+        data: { status },
+      })
+
+    return purchase;
+  },
 }));
