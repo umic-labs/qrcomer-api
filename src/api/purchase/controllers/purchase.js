@@ -36,17 +36,5 @@ module.exports = createCoreController('api::purchase.purchase', ({ strapi }) => 
       .feedback({ preferenceId, status });
 
     return this.transformResponse(nextPurchase);
-  },
-
-  async confirmation(ctx) {
-    await strapi.plugins['email'].services.email.send({
-      to: 'leandrosustenido@mailinator.com',
-      from: 'leandro@umic.com.br',
-      replyTo: 'leandro@umic.com.br',
-      subject: 'Teste de envio 1, subject',
-      text: 'Teste de envio 1, text'
-    })
-
-    ctx.send("Email sent");
-  },
+  }
 }));

@@ -1,20 +1,24 @@
 'use strict';
 
 module.exports = {
-  // async afterCreate(eventStrapi) {
-  //   const purchase = eventStrapi.result.id
-  //   const { event } = eventStrapi.params.data
+  async beforeUpdate(data, model) {
+    const { id } = data;
 
-  //   const result = await eventStrapi.params.data.Attendees.data.map(attenddee => {
-  //     return strapi.db.query('api::attendee.attendee').create({ 
-  //       data: {
-  //         ...attenddee,
-  //         event,
-  //         purchase
-  //       }
-  //     })
-  //   })
+    const PENDING = 'pending'
+    const APPROVED = 'approved'
 
-  //   return result
-  // },
+    const prevPurchase = await strapi.query('api::purchase.purchase').findOne({ id })
+    const nextPurchase = data.params.data
+
+    const isApproving = prevPurchase.status === PENDING
+      && nextPurchase.status === APPROVED
+
+    if(isApproving) {
+      await strapi.service('api::purchase.purchase')
+        .sendConfirmationEmail({
+          to: nextPurchase.email,
+          preferenceId: nextPurchase.preferenceId,
+        });
+    }
+  },
 };
