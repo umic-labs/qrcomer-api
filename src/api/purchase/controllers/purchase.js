@@ -36,5 +36,5 @@ module.exports = createCoreController('api::purchase.purchase', ({ strapi }) => 
       .feedback({ preferenceId, status });
 
     return this.transformResponse(nextPurchase);
-  },
+  }
 }));
