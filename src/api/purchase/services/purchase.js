@@ -25,6 +25,7 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
 
   async createPreference(params) {
     const { total } = params.data
+    const url = `${process.env.FRONT_END_APP_URL}/feedback-payment`
 
     let preference = {
       items: [
@@ -35,9 +36,9 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
         }
       ],
       back_urls: {
-        "success": `${process.env.FRONT_END_APP_URL}/feedback-payment`,
-        "failure": `${process.env.FRONT_END_APP_URL}/feedback-payment`,
-        "pending": `${process.env.FRONT_END_APP_URL}/feedback-payment`
+        "success": url,
+        "failure": url,
+        "pending": url
       },
       auto_return: "approved",
     };
@@ -69,8 +70,6 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
   },
 
   async feedback({ preferenceId, status }) {
-    console.log({ preferenceId, status })
-
     const purchase = await strapi.query('api::purchase.purchase')
       .update({
         where: {

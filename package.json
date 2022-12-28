@@ -16,6 +16,7 @@
     "@strapi/plugin-graphql": "4.1.5",
     "@strapi/plugin-i18n": "4.1.5",
     "@strapi/plugin-users-permissions": "4.1.5",
+    "@strapi/provider-email-sendgrid": "^4.5.4",
     "@strapi/strapi": "4.1.5",
     "crypto-js": "^4.1.1",
     "mercadopago": "^1.5.14",

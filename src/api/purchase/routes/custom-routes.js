@@ -16,5 +16,10 @@ module.exports = {
       path: '/purchases/:preferenceId/feedback',
       handler: 'purchase.feedback',
     },
+    {
+      method: 'GET',
+      path: '/purchases/confirmation',
+      handler: 'purchase.confirmation',
+    },
   ]
 }
