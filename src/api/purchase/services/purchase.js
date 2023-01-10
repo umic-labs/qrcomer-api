@@ -24,17 +24,27 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
   },
 
   async createPreference(params) {
-    const { total } = params.data
+    const { email, cpf, name, items, phoneNumber } = params.data
+    const firstName = name.split(' ')[0]
+    const surname = name.split(firstName)[1]
+
     const url = `${process.env.FRONT_END_APP_URL}/feedback-payment`
 
     let preference = {
-      items: [
-        {
-          title: 'description',
-          unit_price: Number(total/100),
-          quantity: Number(1),
-        }
-      ],
+      items,
+      payer: {
+        email,
+        name: firstName,
+        surname,
+        identification: {
+          type: "CPF",
+          number: cpf,
+        },
+        phone: {
+          area_code: phoneNumber.substring(0,2),
+          number: Number(phoneNumber),
+        },
+      },
       back_urls: {
         "success": url,
         "failure": url,
