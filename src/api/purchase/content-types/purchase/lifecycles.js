@@ -16,8 +16,8 @@ module.exports = {
     if(isApproving) {
       await strapi.service('api::purchase.purchase')
         .sendConfirmationEmail({
-          to: nextPurchase.email,
-          preferenceId: nextPurchase.preferenceId,
+          to: prevPurchase.email,
+          preferenceId: prevPurchase.preferenceId,
         });
     }
   },

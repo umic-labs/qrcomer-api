@@ -41,7 +41,7 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
           number: cpf,
         },
         phone: {
-          area_code: phoneNumber.substring(0,2),
+          area_code: phoneNumber?.substring(0,2),
           number: Number(phoneNumber),
         },
       },
@@ -80,6 +80,14 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
   },
 
   async feedback({ preferenceId, status }) {
+    const isValid = await strapi.query('api::purchase.purchase').findOne({
+      where: {
+        preferenceId,
+      } 
+    })
+
+    if (!isValid) return null
+
     const purchase = await strapi.query('api::purchase.purchase')
       .update({
         where: {
