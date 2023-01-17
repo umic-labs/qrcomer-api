@@ -53,6 +53,9 @@
       "type": "string",
       "unique": true,
       "required": true
+    },
+    "attendees_data": {
+      "type": "json"
     }
   }
 }
