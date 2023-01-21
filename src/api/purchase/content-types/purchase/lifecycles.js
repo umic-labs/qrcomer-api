@@ -2,12 +2,12 @@
 
 module.exports = {
   async beforeUpdate(data, model) {
-    const { id } = data;
+    const { id } = data.params.where;
 
     const APPROVED = 'approved'
     const WAITING = 'waiting'
 
-    const prevPurchase = await strapi.query('api::purchase.purchase').findOne({ id })
+    const prevPurchase = await strapi.query('api::purchase.purchase').findOne({ where: { id } })
     const nextPurchase = data.params.data
 
     const isApproving = prevPurchase.status !== APPROVED
