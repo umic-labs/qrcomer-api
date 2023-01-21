@@ -39,7 +39,8 @@
       "type": "enumeration",
       "enum": [
         "pending",
-        "approved"
+        "approved",
+        "waiting"
       ],
       "default": "pending"
     },
