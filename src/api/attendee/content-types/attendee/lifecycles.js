@@ -1,4 +1,5 @@
 'use strict';
+const uuid = require('uuid');
 
 const { SHA3 } = require('crypto-js')
 
@@ -14,9 +15,8 @@ module.exports = {
 
 function composeQRCode() {
   const PREFIX = 'COMIC2023'
-  const randomize = Date.now().toString()
-  const encryptedCode = SHA3(randomize, { outputLength: 16 })
-  return `${PREFIX}-${encryptedCode}`
+  const randomize = uuid.v4()
+  return `${PREFIX}-${randomize}`
 }
 
 function composeQRCodeUrl({ code }){

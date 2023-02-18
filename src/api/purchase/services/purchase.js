@@ -153,15 +153,13 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
     const nextPurchases = purchasesApproved.map(async (purchase) => {
       await strapi.query('api::purchase.purchase').update({
         where: {
-          id: purchase.id
+          id: purchase.id,
+          attendees_data: { $notNull: true },
         },
         data: {
           status: 'generated',
         }
       })
-
-      // await strapi.service('api::purchase.purchase')
-      //   .generateAttendees({ purchase })
     })
 
     return nextPurchases
