@@ -20,13 +20,13 @@ module.exports = {
     const isGenerating = prevPurchase.status !== GENERATED
       && nextPurchase.status === GENERATED
 
-    if(isApproving) {
-      await strapi.service('api::purchase.purchase')
-        .sendConfirmationEmail({
-          to: prevPurchase.email,
-          preferenceId: prevPurchase.preferenceId,
-        });
-    }
+    // if(isApproving) {
+    //   await strapi.service('api::purchase.purchase')
+    //     .sendConfirmationEmail({
+    //       to: prevPurchase.email,
+    //       preferenceId: prevPurchase.preferenceId,
+    //     });
+    // }
 
     if(isWaiting) {
       await strapi.service('api::purchase.purchase')
