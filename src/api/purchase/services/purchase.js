@@ -123,12 +123,12 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
     return email
   },
 
-  async generageAttendees({ purchase }) {
+  async generateAttendees({ purchase }) {
     if (!purchase || !purchase['attendees_data']) return null
 
     const attendeeDatas = purchase['attendees_data']
 
-    const attendee = attendeeDatas.map(async (attendeeData) => {
+    const attendee = attendeeDatas.map(async (attendeeData, idx) => {
       const data = {
         church: attendeeData.church,
         city: attendeeData.city,
@@ -142,6 +142,30 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
     })
 
     return attendee
+  },
+
+  async generateAllAttendees() {
+    const purchasesApproved = await strapi.query('api::purchase.purchase').findMany({
+      where: {
+        status: 'approved'
+      }
+    })
+
+    const nextPurchases = purchasesApproved.map(async (purchase) => {
+      await strapi.query('api::purchase.purchase').update({
+        where: {
+          id: purchase.id
+        },
+        data: {
+          status: 'generated',
+        }
+      })
+
+      // await strapi.service('api::purchase.purchase')
+      //   .generateAttendees({ purchase })
+    })
+
+    return nextPurchases
   }
 }));
 
