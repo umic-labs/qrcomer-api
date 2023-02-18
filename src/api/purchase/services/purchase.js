@@ -134,7 +134,6 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
         city: attendeeData.city,
         name: attendeeData.name,
         phone: attendeeData.phone,
-        ticket: attendeeData.ticket,
         purchase: purchase.id
       }
 
