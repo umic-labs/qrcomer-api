@@ -26,9 +26,6 @@
       "type": "uid",
       "required": false
     },
-    "qrCodeUrl": {
-      "type": "uid"
-    },
     "hasLectures": {
       "type": "boolean",
       "default": false,
@@ -67,6 +64,9 @@
       "relation": "manyToOne",
       "target": "api::ticket.ticket",
       "inversedBy": "attendees"
+    },
+    "qrCodeUrl": {
+      "type": "string"
     }
   }
 }
