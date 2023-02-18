@@ -155,7 +155,7 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
       return strapi.service('api::purchase.purchase')
         .generateAttendees({ purchase })
     })
-
+    
     Promise.all(nextPurchases).then(console.log)
   }
 }));

@@ -10,7 +10,6 @@ module.exports = {
     
     const prevPurchase = await strapi.query('api::purchase.purchase').findOne({ where: { id } })
     const nextPurchase = data.params.data
-    console.log({ prevPurchase, nextPurchase })
 
     const isApproving = prevPurchase.status !== APPROVED
       && nextPurchase.status === APPROVED
@@ -39,7 +38,7 @@ module.exports = {
 
     if(isGenerating) {
       await strapi.service('api::purchase.purchase')
-        .generageAttendees({
+        .generateAttendees({
           purchase: prevPurchase,
         });
       
