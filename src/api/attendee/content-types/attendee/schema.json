@@ -67,6 +67,15 @@
     },
     "qrCodeUrl": {
       "type": "string"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "waiting",
+        "withdrawn"
+      ],
+      "default": "waiting",
+      "required": true
     }
   }
 }
