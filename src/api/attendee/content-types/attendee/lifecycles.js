@@ -10,12 +10,6 @@ module.exports = {
     data.code = code
     data.qrCodeUrl = composeQRCodeUrl({ code })
   },
-
-  async afterCreate(event) {
-    const { result } = event;
-
-    strapi.service('api::service.service').generateServicesByAppointment({ attendee: result })
-  }
 };
 
 function composeQRCode() {

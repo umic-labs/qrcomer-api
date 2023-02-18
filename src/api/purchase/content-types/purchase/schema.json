@@ -40,7 +40,8 @@
       "enum": [
         "pending",
         "approved",
-        "waiting"
+        "waiting",
+        "generated"
       ],
       "default": "pending"
     },

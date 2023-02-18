@@ -122,6 +122,27 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
 
     return email
   },
+
+  async generageAttendees({ purchase }) {
+    if (!purchase || !purchase['attendees_data']) return null
+
+    const attendeeDatas = purchase['attendees_data']
+
+    const attendee = attendeeDatas.map(async (attendeeData) => {
+      const data = {
+        church: attendeeData.church,
+        city: attendeeData.city,
+        name: attendeeData.name,
+        phone: attendeeData.phone,
+        ticket: attendeeData.ticket,
+        purchase: purchase.id
+      }
+
+      return await strapi.query('api::attendee.attendee').create({ data })
+    })
+
+    return attendee
+  }
 }));
 
 
@@ -155,9 +176,6 @@ function composeConfirmationEmail({ preferenceId }){
                   </tbody>
                 </table>
                 <br />
-                <p style="font-size:15px;line-height:1.4;margin:0 0 15px;font-family:-apple-system,BlinkMacSystemFont,&quot;Segoe UI&quot;,Roboto,Oxygen-Sans,Ubuntu,Cantarell,&quot;Helvetica Neue&quot;,sans-serif;color:#3c4149">
-                  Em breve receberá um email para preenchimento dos nomes dos participantes.
-                </p>
                 <hr style="width:100%;border:none;border-top:1px solid #eaeaea;border-color:#dfe1e4;margin:42px 0 26px" />
               </div>
             </td>
