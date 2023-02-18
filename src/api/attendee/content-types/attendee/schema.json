@@ -75,7 +75,7 @@
         "withdrawn"
       ],
       "default": "waiting",
-      "required": true
+      "required": false
     }
   }
 }
