@@ -151,12 +151,21 @@ module.exports = createCoreService('api::purchase.purchase', ({ strapi }) => ({
       }
     })
 
-    const nextPurchases = purchasesApproved.map((purchase) => {
-      return strapi.service('api::purchase.purchase')
-        .generateAttendees({ purchase })
+    const nextPurchases = purchasesApproved.map(async (purchase) => {
+      await strapi.query('api::purchase.purchase').update({
+        where: {
+          id: purchase.id
+        },
+        data: {
+          status: 'generated',
+        }
+      })
+
+      // await strapi.service('api::purchase.purchase')
+      //   .generateAttendees({ purchase })
     })
-    
-    Promise.all(nextPurchases).then(console.log)
+
+    return nextPurchases
   }
 }));
 
